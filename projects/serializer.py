@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
 
-from projects.models import Projects
+from projects.models import Projects, Interfaces
 
 
 def is_unique_project_name(name):
@@ -70,5 +70,15 @@ class ProjectNameSerializer(serializers.ModelSerializer):
         fields = ('id', 'project_name')
 
 
+class InterfaceNameSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Interfaces
+        fields = "__all__"
+
+
 class InterfacesByProjectIdSerializer(serializers.ModelSerializer):
-    interfaces_set=Int
+    interfaces_set = InterfaceNameSerializer(read_only=True, many=True)
+
+    class Meta:
+        model = Projects
+        fields = ('id', 'interfaces_set')

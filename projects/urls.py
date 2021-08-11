@@ -13,5 +13,8 @@ urlpatterns = [
     })),
     path('projects/names/', views.ProjectsViewSet.as_view({
         "get": "names"
+    })),
+    path('projects/<int:pk>/interfaces/', views.ProjectsViewSet.as_view({
+        "get": "interfaces"
     }))
 ]

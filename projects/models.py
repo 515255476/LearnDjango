@@ -34,3 +34,18 @@ class Person(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Interfaces(models.Model):
+    name = models.CharField(max_length=200, verbose_name='接口名称')
+    tester = models.CharField(max_length=200, verbose_name='测试人员名称')
+    desc = models.CharField(max_length=200, verbose_name='接口描述')
+    project = models.ForeignKey('projects.Projects', on_delete=models.CASCADE, null=True)
+
+    class Meta:
+        db_table = 'tb_interface'
+        verbose_name = '接口名称'
+        verbose_name_plural = "接口名称"
+
+    def __str__(self):
+        return self.name
