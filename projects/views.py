@@ -157,10 +157,11 @@ class ProjectsViewSet(viewsets.ModelViewSet):
         serializer = ProjectNameSerializer(instance=queryset, many=True)
         return Response(serializer.data)
 
-    @action(methods=['get'], detail=False)
-    def interface(self, request):
+    @action(methods=['get'], detail=True)
+    def interfaces(self, request, pk):
         instance = self.get_object()
         serializer = InterfacesByProjectIdSerializer(instance=instance)
+        return Response(serializer.data)
 
     # def list(self, request, *args, **kwargs):
     #     queryset = self.filter_queryset(self.get_queryset())

@@ -51,6 +51,7 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS':
         'utils.pagination.PageNumberPaginationManual',
     'PAGE_SIZE': 3,
+    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema'
 }
 
 MIDDLEWARE = [
